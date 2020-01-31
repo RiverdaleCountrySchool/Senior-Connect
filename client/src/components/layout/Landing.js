@@ -50,7 +50,7 @@ class Landing extends React.Component {
 			<input id = "submitbutton" type="submit" value="Submit" />
 			</form>
 			</Col>
-			<Col><img  src={pic} id = "mainpic" alt="Older adults enjoying time together." /></Col>
+			<Col><img id = "mainpic" src={pic} alt="Older adults enjoying time together." /></Col>
 			</Row>
 			</Container>
 			</div>
