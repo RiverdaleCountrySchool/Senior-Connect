@@ -152,7 +152,7 @@ class EventAttendees extends React.Component {
 class EventMap extends React.Component {
   render() {
     const address = event.address; // map should be dynamic based on this address
-    
+
     return (
       <Container>
        <Row>
@@ -173,7 +173,7 @@ class EventMap extends React.Component {
       <Row>
         <Col align="center">
           <br />
-            <Button variant="flat" size="xxl">
+            <Button variant="flat" size="xxl" >
             Help me get there
           </Button>
         </Col>
