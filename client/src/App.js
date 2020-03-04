@@ -13,6 +13,7 @@ import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import Slideshow from './components/layout/slideshow.js'
 // import {Display} from "./components/layout/EventList.js"
 
 
@@ -66,6 +67,7 @@ class App extends React.Component {
           <Route exact path="/nearby" component={Login} />
           <Route path="/detail/:id" component={EventDetail} />
           <Route exact path='/list/:zip' component={EventList} />
+          <Route exact path='/slideshow' component={Slideshow} />
 
 
         </div>

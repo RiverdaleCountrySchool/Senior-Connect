@@ -9,50 +9,124 @@ import classnames from "classnames"
 
 import {getEvents} from "../../actions/eventActions";
 import pic from './elders.jpg';
+import pic1 from './olderadult.jpg';
+import pic2 from './olderadult2.jpg';
 import "./home.css";
 import "./EventList.js";
+import { Slide } from 'react-slideshow-image';
 
-
+const slideImages = [
+  pic,
+  pic,
+  pic
+];
+ 
+const properties = {
+  duration: 5000,
+  transitionDuration: 500,
+  infinite: true,
+  indicators: true,
+  arrows: true,
+  onChange: (oldIndex, newIndex) => {
+    console.log(`slide transition from ${oldIndex} to ${newIndex}`);
+  }
+}
 
 class Landing extends React.Component {
 	constructor(props) {
+
 		super(props);
-		this.state = {value: ''};
+		this.state = {value: '', i: ""};
 	    this.handleChange = this.handleChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
+
+    	this.images = [pic, pic1, pic2];
+    	// console.log("constructing")
+    	this.i = 2;
+
+
+
 	}
+
 
 	handleChange(event) {
 		this.setState({value: event.target.value});
+		console.log("hello");
+		
 	}
 
-  handleSubmit(event) {
-    // validate zip here
-    //event.preventDefault();
-  }
+
+	slidethrough(){
+		if (this.i<2){
+			console.log(this.i)
+			this.state = {value: '', i: ""}
+			this.i ++;
+
+
+		} else{
+			console.log(this.i)
+			this.state = {value: '', i: ""}
+			this.i = 0;
+
+	
+		}	
+	}
+
+	runslidethrough(){
+		var interval = setInterval(this.slidethrough, 3000);
+	}
+
+	componentWillMount(){
+		this.runslidethrough()
+	}
+
+
+	handleSubmit(event) {
+	   // validate zip here
+	   //event.preventDefault();
+	}
+
 
 	render(){
+
 		return(
 			<div id = "grad">
 			<div id="bg-image"></div>
 			<Container>
 			<Row>
 			<Col id = "slogan">
-			<h1>Meet</h1>
-			<h1>Explore</h1>
-			<h1>Discover</h1>
+			
+			
 			
 
 			<form action={`/list/${this.state.value}`} method="get" onSubmit={this.handleSubmit}>
-
-			<label id = "enterzip">enter your zipcode: </label>  <br/>
+			<h1 id = "near">Enter Zipcode</h1>
+			
 			<input id = "zip" value={this.state.value} onChange={this.handleChange} type="zipcode" /> <br/>
 			<input id = "submitbutton" type="submit" value="Submit" />
 			</form>
 			</Col>
-			<Col><img  src={pic} id = "mainpic" alt="Older adults enjoying time together." /></Col>
+
+
+			<Col id = "picture123">
+			<div className="slide-container">
+          		<Slide {...properties}>
+            		<div className="each-slide">
+              			<div style={{'backgroundImage': `url(${slideImages[0]})`}}></div>
+            		</div>
+           			<div className="each-slide">
+              			<div style={{'backgroundImage': `url(${slideImages[1]})`}}></div>
+            		</div>
+           			 <div className="each-slide">
+             		 	<div style={{'backgroundImage': `url(${slideImages[2]})`}}></div>
+            		</div>
+          		</Slide>
+        	</div>
+      
+			</Col>
 			</Row>
 			</Container>
+
 			</div>
 			)}
 	}
