@@ -34,9 +34,11 @@ const event = {
 
 class EventInfo extends React.Component {
 
+
   render() {
     const e = this.props.e;
     console.log(e.name); 
+    console.log(this.props.e.img)
 
     return (
       <Container> 
@@ -47,7 +49,7 @@ class EventInfo extends React.Component {
         </Row>
         <Row>
           <Col align="center">
-            <img  src={process.env.PUBLIC_URL + "/" + e.eventimageURL} id = "mainpic" alt={e.imageAltText} />
+            <img  src={e.img} id = "mainpic" alt={e.imageAltText} />
           </Col>
         </Row>
         <Row>
@@ -169,6 +171,14 @@ class EventDetail extends React.Component {
         }
       }
    }
+   arrayBufferToBase64(buffer) {
+    return new Promise(function(resolve, reject){
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+     resolve(window.btoa(binary));
+   })
+  };
    componentDidMount(){
     var myevent;
     this.props.getEvent({id: this.id}).then(myevent => {
@@ -183,7 +193,10 @@ class EventDetail extends React.Component {
         myevent.data.event.time = time;                      
         myevent.data.event.date = date;
         myevent.data.event.empty = false;
-        this.setState({e: myevent.data.event});
+        this.arrayBufferToBase64(myevent.data.event.img.data.data).then((bin) => {
+          myevent.data.event.img = 'data:image/jpeg;base64,' + bin
+          this.setState({e: myevent.data.event})
+      })
       })
    }
    render() {

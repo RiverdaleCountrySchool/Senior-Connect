@@ -8,6 +8,7 @@ import Dashboard from './components/layout/Dashboard.js'
 import EventDetail from './components/layout/EventDetail.js'
 import EventList from './components/layout/EventList.js'
 import CreateEvent from './components/layout/CreateEvent.js'
+import EditEvent from './components/layout/EditEvent.js'
 import HelpMeGetThere from './components/layout/HelpMeGetThere.js'
 import { Provider } from "react-redux";
 import store from "./store";
@@ -67,6 +68,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/nearby" component={Login} />
           <Route path="/detail/:id" component={EventDetail} />
+          <Route path="/edit/:id" component={EditEvent} />
           <Route path="/helpMeGetThere/:id" component={HelpMeGetThere} />
           <Route exact path='/list/:zip' component={EventList} />
 

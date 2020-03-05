@@ -8,6 +8,7 @@ import {
 } from "./types";
 
 export const createEvent = eventData => dispatch => {
+
   console.log("creating event...")
   console.log(eventData)
   return new Promise(function(resolve, reject){
