@@ -12,7 +12,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import { connect } from "react-redux";
 import { getEvent } from "../../actions/eventActions";
 
-/*
+
 const event = {
   id: 1,
   title: 'Bowling in Brooklyn', 
@@ -30,7 +30,7 @@ const event = {
   imageAltText: 'Bowling',
   attendees: [1,2,3]
 };
-*/
+
 const attendees = [
   {id: 1, name: 'Tonya P.'},
   {id: 2, name: 'Tony W.'},
