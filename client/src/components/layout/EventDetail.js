@@ -129,7 +129,7 @@ class EventAttendees extends React.Component {
 
 class EventMap extends React.Component {
   render() {
-    const address = event.address; // map should be dynamic based on this address
+    const address = this.event.address; // map should be dynamic based on this address
 
     //const myevent = this.props.myevent; // map should be dynamic based on this address
 
