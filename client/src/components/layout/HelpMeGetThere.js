@@ -64,7 +64,7 @@ class HelpMeGetThere extends React.Component {
           <Col>
             Curb API call for {this.state.e.location.address} <br />
             lat {this.state.e.location.coordinates[1]} <br />
-            long {this.state.e.location.coordinates[2]}
+            long {this.state.e.location.coordinates[0]}
           </Col>
           
          </Row>

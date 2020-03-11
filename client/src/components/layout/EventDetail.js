@@ -183,11 +183,6 @@ class EventDetail extends React.Component {
     var myevent;
     this.props.getEvent({id: this.id}).then(myevent => {
         console.log("getevent");
-        //var date = myevent.data.event.eventDate.split('T').shift().split('-').reverse();
-        //var temp = date[0]; // reverse to mm/dd
-        //date[0] = date[1];
-        //date[1] = temp;                     
-        //date = date.join('/');  // join with "/"      -> "09/11/2015"
         var date = formatDate(myevent);
         var time = formatTime(myevent);
         myevent.data.event.time = time;                      
