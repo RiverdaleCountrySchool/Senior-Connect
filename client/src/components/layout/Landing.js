@@ -36,7 +36,11 @@ class Landing extends React.Component {
 	constructor(props) {
 
 		super(props);
+<<<<<<< Updated upstream
 		this.state = {value: '', i: ""};
+=======
+		this.state = {value: '', message: '', messageColor: '#000000'};
+>>>>>>> Stashed changes
 	    this.handleChange = this.handleChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -95,7 +99,11 @@ class Landing extends React.Component {
 			<Container>
 			<Row>
 			<Col id = "slogan">
+<<<<<<< Updated upstream
 			
+=======
+			<h1>Meet other adults at events near you. Enter your zipcode below.</h1>
+>>>>>>> Stashed changes
 			
 			
 

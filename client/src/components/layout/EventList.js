@@ -9,6 +9,11 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { createEvent, getEvents } from "../../actions/eventActions";
 import ReactDOM from 'react-dom';
+<<<<<<< Updated upstream
+=======
+import Geocode from 'react-geocode'
+import "./home.css";
+>>>>>>> Stashed changes
 
 const Events = [
   {id: 1,
@@ -47,6 +52,7 @@ class EventList extends React.Component {
      this.zip = props.match.params.zip;
      console.log("zip IS " + this.zip);
    }
+<<<<<<< Updated upstream
    event = (i) => {
 		return(
 			<Card bg = "light">
@@ -86,6 +92,58 @@ class EventList extends React.Component {
 			</div>
 		)	 
 	}
+=======
+   componentDidMount(){
+     this.props.getEvents({zip: this.zip}).then(events => {
+     	console.log("EVENT 0 ");
+     	console.log(events.data[0]._id);
+     	events.data.empty = false;
+     	this.setState({events: events});
+     });
+   }
+
+   render() {
+   		
+   		if (this.state.events.data.empty) {
+   			return(<div>Loading events</div>);
+   		}
+   		else {
+   			const eventCards = this.state.events.data.map((event, key) =>
+       			<Card bg = "light">
+					<Card.Title id = "eventname">
+						{event.name}
+			 		</Card.Title>
+			 		<Card.Body>
+						<Card.Text id = "eventdetails">
+			 				{ formatDate(event.eventDate) }, { formatTime(event.eventDate) } 
+			 				at { event.location.address}<br />
+			 				{ event.description }
+		 				</Card.Text>
+		 				<Button id = "moreinfo" variant = "primary" href = {'/detail/' + event._id} >
+							More Info
+		 				</Button>
+	 				</Card.Body>
+ 				</Card>
+ 			);
+
+   			return (
+				<div id = "grad">
+      				<div id="bg-image"></div>
+    	  			<Container>
+						<Row>
+							<Col>
+								<h1 id = "eventsnear">Events near {this.zip}</h1>
+							
+								{eventCards}
+						
+							</Col>
+						</Row>				
+					</Container>
+				</div>
+			);
+		} // !empty
+	} 
+>>>>>>> Stashed changes
 }
 
 export default EventList;
